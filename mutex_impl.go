@@ -18,7 +18,6 @@ func New() Mutex {
 func (nM *newMutex) LockChannel() <-chan struct{} {
 	if atomic.CompareAndSwapInt32(&nM.locked, 0, mutexLocked) {
 		nM.c <- struct{}{}
-		return nM.c
 	}
 	return nM.c
 }
@@ -36,7 +35,5 @@ func (nM *newMutex) Lock() {
 }
 
 func (nM *newMutex) Unlock() {
-	if atomic.CompareAndSwapInt32(&nM.locked, mutexLocked, 0) {
-		return
-	}
+	atomic.CompareAndSwapInt32(&nM.locked, mutexLocked, 0)
 }
