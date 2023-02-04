@@ -1,7 +1,0 @@
-mode: atomic
-contest/mutex_impl.go:16.18,18.2 1 4
-contest/mutex_impl.go:20.51,21.60 1 3345
-contest/mutex_impl.go:25.2,25.13 1 3345
-contest/mutex_impl.go:21.60,24.3 2 3328
-contest/mutex_impl.go:28.28,31.2 2 6702
-contest/mutex_impl.go:33.30,36.2 2 10030
