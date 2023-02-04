@@ -31,5 +31,7 @@ func (nM *extMutex) Lock() {
 }
 
 func (nM *extMutex) Unlock() {
-	atomic.CompareAndSwapInt32(&nM.locked, mutexLocked, 0)
+	if !atomic.CompareAndSwapInt32(&nM.locked, mutexLocked, 0) {
+		panic("contest: unlock of unlocked mutex")
+	}
 }
